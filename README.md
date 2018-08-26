@@ -204,7 +204,7 @@ see `server/models/users.js` and `server/models/transactions.js`
 
 #### Design the API
 
-User Endpoint
+#####User Endpoint
 | HTTP Verb | CRUD Action    |
 | --------: | :------------- |
 | POST      | Create         |
@@ -225,7 +225,34 @@ server                <- Our API routes or "endpoints"
     user.js
 ```
 
+#####User Route Example
+Most of our endpoints will follow this exact same pattern
+
+```Javascript
+const User = require('../../models/user)
+
+module.exports = function (router) {
+  router.get('/user/:id', function (req, res) {
+    User.findById(req.params.id).exec()
+      .then(docs => res.status(200) // If found, then we return a document
+        .json(docs)) // as JSON along with a status code of 200.
+  })
+}
+```
+
 #### Demo: Build the API
+1. install Express by `yarn add express`
+2. edit `server/package.json`
+```Javascript
+  "scripts": {
+    "start": "npm run lint & nodemon app.js", // app.js to be created
+    "lint": "./node_modules/./bin/eslint **/*.js"
+  },
+```
+3. create `app.js` to kick-off our Express API server
+4. create `api` folder and create `index.js` to bundle up all of the routes
+5. create `api/routes` folder and create `user.js` `transaction.js` file for routing
+6. `yarn add morgan` and `yarn add body-parser`
 
 #### Demo: API Routes
 
