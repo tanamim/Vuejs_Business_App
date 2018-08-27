@@ -205,6 +205,8 @@ see `server/models/users.js` and `server/models/transactions.js`
 #### Design the API
 
 ##### User Endpoint
+We will create `GET, PUT, POST` endpoint
+
 | HTTP Verb | CRUD Action    |
 | --------: | :------------- |
 | POST      | Create         |
@@ -246,17 +248,55 @@ module.exports = function (router) {
 ```Javascript
   "scripts": {
     "start": "npm run lint & nodemon app.js", // app.js to be created
-    "lint": "./node_modules/./bin/eslint **/*.js"
+    "lint": "./node_modules/.bin/eslint **/*.js"
   },
 ```
 3. create `app.js` to kick-off our Express API server
 4. create `api` folder and create `index.js` to bundle up all of the routes
 5. create `api/routes` folder and create `user.js` `transaction.js` file for routing
-6. `yarn add morgan` and `yarn add body-parser`
+6. `yarn add morgan` and `yarn add body-parser` and `yarn add eslint`
+7. Create reference to those middleware in `server/app.js`
 
 #### Demo: API Routes
+* Define API endpoints in `routes` for `router.get, router.post, router.put`
+See `server/api/routes/user.js` and `server/api/routes/transaction.js`
+
+(Example API) Define GET endpoint
+```Javascript
+// server/aipi/routes/user.js
+const User = require('../../models/user')
+
+module.exports = function (router) {
+  router.get('/user/:id', function (req, res) {
+    User.findById(req.params.id).exec()
+      .then(docs => res.status(200)
+        .json(docs))
+      .catch(err => res.status(500)
+        .json({
+          message: 'Error finding user',
+          error: err
+        }))
+  })
+}
+```
+
+Bundle API routes
+```Javascript
+// server/api/index.js
+const express = require('express')
+const router = express.Router()
+
+require('./routes/transaction')(router)
+require('./routes/user')(router)
+
+module.exports = router
+```
 
 #### Debugging and Testing he API
+1. Start MongoDB `mongod`
+2. Start API Server `yarn run start`
+3. TEST each `GET, POST` on Postman
+4. For testing transaction API, don't forget to include `UserId` key and its value. See in `server/api/routes/transaction.js` `const userId = req.get('userId')
 
 ### UI Development with Vue.js and Vuetify
 

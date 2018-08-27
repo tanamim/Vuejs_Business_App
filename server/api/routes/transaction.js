@@ -56,6 +56,7 @@ module.exports = function (router) {
       }
     ]
 
+    // Mongoose aggregate function
     Transaction.aggregate(pipeline).exec()
       .then(docs => res.status(200)
         .json(docs))
