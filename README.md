@@ -300,3 +300,22 @@ module.exports = router
 
 ### UI Development with Vue.js and Vuetify
 
+#### Getting Our Development Environment
+- VSCode Extension `Vetur` for vuejs syntax highlighting
+- VSCode Extension `GitLens` for useful git managment
+
+#### Stubbing in the Vue Files
+
+Vue Files We'll Need
+- Login - no registration page needed
+- Transactions - list of transactions for the current month
+- Edit Transaction - add new and edit existing transactions
+- About - as time allows - not critical for "MVP"
+
+Create vue files in `client/src/components` folder
+
+Import Transactions components to Home.vue. Note template `<transactions>` tag should be lower-case.
+
+Import EditTransactions components to Home.vue. Note template `<edit-transactions>` tag should be kebab-style.
+
+Run `yarn run build` to package using webpack
