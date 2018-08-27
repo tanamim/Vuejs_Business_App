@@ -204,7 +204,7 @@ see `server/models/users.js` and `server/models/transactions.js`
 
 #### Design the API
 
-#####User Endpoint
+##### User Endpoint
 | HTTP Verb | CRUD Action    |
 | --------: | :------------- |
 | POST      | Create         |
@@ -225,7 +225,7 @@ server                <- Our API routes or "endpoints"
     user.js
 ```
 
-#####User Route Example
+##### User Route Example
 Most of our endpoints will follow this exact same pattern
 
 ```Javascript
