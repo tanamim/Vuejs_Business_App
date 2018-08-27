@@ -305,7 +305,6 @@ module.exports = router
 - VSCode Extension `GitLens` for useful git managment
 
 #### Stubbing in the Vue Files
-
 Vue Files We'll Need
 - Login - no registration page needed
 - Transactions - list of transactions for the current month
@@ -319,3 +318,23 @@ Import Transactions components to Home.vue. Note template `<transactions>` tag s
 Import EditTransactions components to Home.vue. Note template `<edit-transactions>` tag should be kebab-style.
 
 Run `yarn run build` to package using webpack
+
+#### Setting up Routing
+Setup Routes
+- Home (default route)
+- Login
+- About
+
+Transactions
+- Child component in Home.vue
+- Route not needed
+
+Edit Transaction
+- Route not needed
+- We'll use modal for this
+
+"router" folder and `src/router/index.js` already added by vue-cli
+
+Official router package: vue-router
+
+
