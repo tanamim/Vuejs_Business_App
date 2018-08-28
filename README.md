@@ -337,4 +337,63 @@ Edit Transaction
 
 Official router package: vue-router
 
+Import components from `@/components/` folder. @ means src folder created by vue-cli
+
+#### Demo: Testing the Baseline Setup
+
+run `yarn run dev`
+
+If you find error by eslint, run `run lint --fix`
+
+#### Selecting a Vuetify Layout
+Vuetify Pre-Defined Layouts
+* https://vuetifyjs.com/en/examples/layouts/baseline
+* https://vuetifyjs.com/en/examples/layouts/complex
+* https://vuetifyjs.com/en/examples/layouts/googleContacts
+
+#### Add Vuetify to the Project
+https://vuetifyjs.com/en/getting-started/quick-start
+
+1. Add Vuetify
+`npm install vuetify --save` or `yarn add vuetify`
+
+```Javascript
+// client/main.js
+import Vue from 'vue'
+import Vuetify from 'vuetify'
+ 
+Vue.use(Vuetify)
+```
+
+2. Add selected layout
+Copy [the vuetify source code](https://github.com/vuetifyjs/vuetifyjs.com/blob/master/src/examples/layouts/googleContacts.vue) and replace entirely in `src/components/Home.vue`
+
+3. Do a test run
+`yarn run dev`
+
+4. Fix any issues
+`yarn run lint --fix` will automatically fix linting issues.
+
+5. Import Vuetify styles
+6. Import material design icons
+```Java
+// App.vue
+<style>
+@import 'vuetify/dist/vuetify.min.css'; // Don't forget semicolon here
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons';
+</style>
+```
+
+7. Vuetify components should be surrounded by `<v-app>` tag
+```html
+<!-- App.vue -->
+<template>
+  <v-app id="app">
+    <router-view/>
+  </v-app>
+</template>
+```
+
+#### Vuetify Components Review
+
 
