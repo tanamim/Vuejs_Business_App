@@ -418,6 +418,11 @@ Working on Login.vue using Grid system.
 - The structure should follow `<v-container><v-layout><v-flex></v-flex></v-layout></v-container>`
 
 #### Review Vuetified Components
+
+Working on Home.vue
 - Home
 - Transactions (Child component)
 - EditTransaction (Modal dialog)
+
+See `Home.vue, Transactions.vue, EditTransactions.vue`
+
