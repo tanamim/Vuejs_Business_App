@@ -395,5 +395,29 @@ Copy [the vuetify source code](https://github.com/vuetifyjs/vuetifyjs.com/blob/m
 ```
 
 #### Vuetify Components Review
+Components are like building blocks
+Examples
+- Buttons
+- Dialogs
+- Data tables
+- Forms
 
+Vuetify includes a large number of UI components
 
+#### Using Vuetify Components
+Components We Need
+- Button: saving and canceling events
+- Data Tables: to display a list of our transactions
+- Dialogs: add new and edit existing transactions
+- Forms
+- Icons: for menus and form entry fields 
+- Pickers: date pickers
+- Snackbars: notify users of some action or error that takes place
+
+Working on Login.vue using Grid system.
+- The structure should follow `<v-container><v-layout><v-flex></v-flex></v-layout></v-container>`
+
+#### Review Vuetified Components
+- Home
+- Transactions (Child component)
+- EditTransaction (Modal dialog)
