@@ -675,3 +675,16 @@ new Vue({
 })
 ```
 
+#### Demo: Modify Login.vue
+See `client/src/components/Home.vue` and `client/src/components/Login.vue`
+
+### Getting Data from the API
+
+#### Introduction to Axios
+
+#### Calling the API from the Component
+
+#### Calling the API from the Vuex Store
+
+#### Demo: Using Axios
+
