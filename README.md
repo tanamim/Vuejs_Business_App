@@ -681,10 +681,25 @@ See `client/src/components/Home.vue` and `client/src/components/Login.vue`
 ### Getting Data from the API
 
 #### Introduction to Axios
+https://github.com/axios/axios
+
+`yarn add axios`
 
 #### Calling the API from the Component
+Vue Component <--> API + Models <--> MongoDB Database
 
 #### Calling the API from the Vuex Store
+Using axios
+- From our Vuex store
+Setup axios
+- main.js
+- axios is then available throughout app
+Modify
+- user.js Vuex store module
+- Login.vue component
 
 #### Demo: Using Axios
+See `main.js`
+
+On the API server, `yarn add cors` to allow Cross-Origin Resource Sharing, then requre + use cors in `server/app.js`
 
