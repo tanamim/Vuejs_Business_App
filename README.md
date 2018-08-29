@@ -552,3 +552,126 @@ Vuejs Vocabulary
 
 ### Manage Application State with Vuex
 
+Script Block
+- Name
+- Data
+- Props / PropsData
+- Computed
+- Methods
+- Watch
+- Lifecycle Hooks
+
+#### What is Vuex?
+Vuex is a state management pattern & the library for Vue.js applications. It serves as a centralized store for all the components in an application.
+
+#### Vuex Store Objects
+- State
+- Actions
+- Mutations
+- Getters
+- Modules
+
+![Vuex Workflow](https://vuex.vuejs.org/vuex.png)
+
+#### State
+```Javascript
+const store = new Vuex.Store({
+  state: {
+    user: null,
+    isAuthorized: false,
+    roles: []
+  }
+})
+```
+
+#### Actions
+```Javascript
+const store = new Vuex.Store({
+  state: {...},
+  actions: {
+    // loginUser (context, user) {
+    //   // Login Code Goes Here...
+    //   let isAuthorized = true
+    //   context.commit('loginUser', isAuthorized)
+    // }
+    loginUser ( { commit }, user) {  // deconstructed version
+      // Login Code Goes Here...
+      let isAuthorized = true
+      commit('loginUser', isAuthorized)  // Actions -> commit
+    }
+  }
+})
+```
+
+#### Mutations
+```Javascript
+const store = new Vuex.Store({
+  state: {...},
+  actions: { loginUser (context, user {...})},
+  mutetions: {
+    loginUser (state, isAuthorized) {
+      state.isAuthorized = isAuthorized // Mutations -> change state
+    }
+  }
+})
+```
+
+#### Getters
+```Javascript
+const store = new Vuex.Store({
+  state: {...},
+  getters: {
+    fullName: state => {
+      return state.firstName + ' ' + state.lastName
+    }
+  },
+  actions: {...},
+  mutations: {...}}
+})
+```
+
+#### Modules
+store/index.js (this is a single state tree of the two module)
+store/modules/users.js
+store/modules/transactions.js
+
+#### Demo: Develop the Vuex Store
+`yarn add vuex`
+
+```Javascript
+// client/src/store/index.js
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+import user from './modules/user'
+import transactions from './modules/transactions'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  modules: {
+    user,
+    transactions
+  }
+})
+```
+
+```Javascript
+// client/main.js
+// Vuex store
+import store from './store'
+
+Vue.config.productionTip = false
+
+Vue.use(Vuetify)
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  store,
+  router,
+  components: { App },
+  template: '<App/>'
+})
+```
+
