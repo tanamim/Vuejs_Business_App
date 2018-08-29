@@ -426,3 +426,129 @@ Working on Home.vue
 
 See `Home.vue, Transactions.vue, EditTransactions.vue`
 
+
+#### Vuetify Tags Usage Pattern
+
+Basic Structure
+```html
+<v-app>
+  <v-content>
+    <v-container>
+      <v-layout>
+        <v-flex>
+          Vuetify Components Here
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-content>
+</v-app>
+```
+
+Toolbar
+```html
+<v-toolbar>
+  <v-list>
+    <v-list-tile>
+      <v-list-tile-title class="title">
+        Title Here
+      </v-list-tile-title>
+    </v-list-tile>
+  </v-list>
+</v-toolbar>
+```
+
+Navigation Drawer
+```html
+<v-navigation-drawer>
+  <v-toolbar>
+    ...
+  </v-toolbar>
+
+  <v-divider></v-divider>
+
+  <v-list>
+    ...
+  </v-list>
+</v-navigation-drawer>
+```
+
+Lists
+```html
+<v-list>
+  <v-list-tile>
+    <v-list-tile-action>
+      <v-icon>{{ item.icon }}</v-icon>
+    </v-list-tile-action>
+    <v-list-tile-content>
+      <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+    </v-list-tile-content>
+  </v-list-tile>
+</v-list>
+```
+
+Data Table
+```Javascript
+<template>
+  <v-data-table :headers="headers" :items="desserts" class="elevation-1">
+    <template slot="items" slot-scope="props">
+      <td>{{ props.item.name }}</td>
+      <td class="text-xs-right">{{ props.item.calories }}</td>
+      <td class="text-xs-right">{{ props.item.fat }}</td>
+    </template>
+  </v-data-table>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        headers: [
+          { text: 'Dessert', value: 'name', sortable: false },
+          { text: 'Calories', value: 'calories' },
+          { text: 'Fat (g)', value: 'fat' },
+        ],
+        desserts: [
+          { name: 'Frozen Yogurt', calories: 159, fat: 6.0 },
+          { name: 'Ice cream', calories: 237, fat: 9.0},
+        ]
+      }
+    }
+  }
+</script>
+```
+
+Vuejs Vocabulary
+```
+<v-navigation-drawer>
+<v-subheader>
+<v-divider>
+<v-select>
+<v-list>
+<v-list-group>
+<v-list-tile>
+<v-list-tile-action>
+<v-list-tile-content>
+<v-list-tile-title>
+<v-toolbar>
+<v-toolbar-side-icon>
+<v-toolbar-title>
+<v-card>
+<v-card-title>
+<v-card-text>
+<v-card-actions>
+<v-form>
+<v-dialog>
+<v-spacer>
+<v-tooltip>
+<v-btn>
+<v-icon>
+<v-avatar>
+<v-footer>
+<blockquote>
+<code>
+<var>
+<kbd>
+```
+
+### Manage Application State with Vuex
+
