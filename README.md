@@ -770,3 +770,22 @@ Modify the user Vuex store module
 - loginUser action
 
 ### Summary and Other Options
+
+#### Alternative Libraries
+
+Vue.js UI Component Libraries
+- Vuetify
+- Vue Material
+- Bootstrap-Vue
+- Element
+- Buefy
+- Vux
+  - Mobile apps
+
+#### Database Obtions
+- MongoDB
+- Firebase (By Google)
+- Postgressql (Relatoinal Database)
+- Sequelize
+
+
