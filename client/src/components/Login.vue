@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row wrap>
       <v-flex xs12>
-        <h2>Login to Globomantics</h2>
+        <h2>Login to MoonTrade</h2>
       </v-flex>
       <v-spacer></v-spacer>
       <v-flex xs12 sm6 offset-sm3>
@@ -25,6 +25,10 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
+
 export default {
   data () {
     return {
@@ -42,12 +46,16 @@ export default {
     }
   },
   computed: {
-    isLoggedIn () {
-      return this.$store.getters.isLoggedIn
-    },
-    loginError () {
-      return this.$store.getters.loginError
-    }
+    // isLoggedIn () {
+    //   return this.$store.getters.isLoggedIn
+    // },
+    // loginError () {
+    //   return this.$store.getters.loginError
+    // }
+    ...mapGetters([
+      'isLoggedIn',
+      'loginError'
+    ])
   },
   methods: {
     login: function () {
@@ -59,7 +67,9 @@ export default {
       this.$store.dispatch('logInUser', payload)
         .then(() => {
           if (vm.isLoggedIn) {
-            this.$router.push({ path: '/' })
+            this.$router.push({
+              path: '/'
+            })
           } else {
             vm.showAlert = true
           }

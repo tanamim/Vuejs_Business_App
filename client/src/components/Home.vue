@@ -71,7 +71,7 @@
     >
       <v-toolbar-title :style="$vuetify.breakpoint.smAndUp ? '' : 'min-width: 72px'" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <span class="hidden-xs-only">Globomantics Rewards</span>
+        <span class="hidden-xs-only">MoonTrade Strategies</span>
       </v-toolbar-title>
       <!-- <v-text-field
         light
@@ -80,7 +80,7 @@
         placeholder="Search"
         style="max-width: 500px; min-width: 128px"
       ></v-text-field> -->
-      <!-- <header-actions></header-actions> -->
+      <header-actions></header-actions>
     </v-toolbar>
     <v-content>
       <v-container fluid>
@@ -96,12 +96,14 @@
 <script>
 import Transactions from './Transactions.vue'
 import EditTransaction from './EditTransactions.vue'
+import HeaderActions from './HeaderActions.vue'
 
 export default {
   name: 'Home',
   components: {
     Transactions,
-    EditTransaction
+    EditTransaction,
+    HeaderActions
   },
   computed: {
     isLoggedIn () {
@@ -129,6 +131,9 @@ export default {
     }
   },
   mounted: function () {
+    console.log('localStorage: isLogin', localStorage.getItem('isLoginLocal')) // DEBUG
+    console.log('sessionStorage: isLogin', sessionStorage.getItem('isLoginSession')) // DEBUG
+
     console.log('Is user logged in? ', this.isLoggedIn)
     if (!this.isLoggedIn) {
       this.$router.push({ path: '/login' })

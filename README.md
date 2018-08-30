@@ -703,3 +703,70 @@ See `main.js`
 
 On the API server, `yarn add cors` to allow Cross-Origin Resource Sharing, then requre + use cors in `server/app.js`
 
+### Finalizing the Demo Application
+
+#### Finishing Things Up
+Completed business rules
+* User is required to login
+* Show current month's transactions
+* Navigate to previous month
+* Calculate and show running balance
+* Search transactions
+  
+What needs to be done
+* Enter in a new tarnsaction
+* Limit transaction types
+* Longer notes
+
+Nice to have
+* User profile editor
+* HeaderActions.vue component
+* Left menu
+
+#### Add and Edit Transactions
+EditTransactions.vue
+- Dispatch to action
+
+Vuex - transacitons module
+- Add "saveTransaction" action
+- Post transaction data to API
+
+#### Header Actions
+New Vue component
+- HeaderActions.vue
+
+Modify Home.vue
+- Import new HeaderActions
+- Register component
+- Add to template
+
+#### Vuex Mappers
+mapGetters Helper is a shorthand expression
+```Javascript
+// See also `client/src/components/Transactions.vue`
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters([
+      'isLoggedIn,
+      'loginError
+    ])
+    // isLoggedIn () {
+    //   return this.$store.getters.isLoggedIn
+    // },
+    // loginError () {
+    //   return this.$store.getters.loginError
+    // }
+  }
+}
+```
+
+#### Security
+Install bcrypt.js
+`yarn add bcryptjs`
+
+Modify the user Vuex store module
+- updateUserProfile action
+- loginUser action
+
+### Summary and Other Options

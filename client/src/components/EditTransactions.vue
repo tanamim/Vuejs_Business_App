@@ -112,10 +112,13 @@ export default {
       deposit: 0.0
     },
     transactionTypes: [
-      { text: 'Credit Card', value: 'Credit Card' },
-      { text: 'Debit Card', value: 'Debit Card' },
-      { text: 'Check', value: 'Check' },
-      { text: 'Deposit', value: 'Deposit' }
+    //   { text: 'Credit Card', value: 'Credit Card' },
+    //   { text: 'Debit Card', value: 'Debit Card' },
+    //   { text: 'Check', value: 'Check' },
+    //   { text: 'Deposit', value: 'Deposit' }
+      { text: 'Buy', value: 'Buy' },
+      { text: 'Sell', value: 'Sell' },
+      { text: 'Random', value: 'Random' }
     ],
     transactionDatePicker: false
   }),
@@ -123,6 +126,7 @@ export default {
     saveTransaction: function () {
       console.log('Saving transaction record:')
       // TODO: wire up Vuex action
+      this.$store.dispatch('saveTransaction', this.transaction)
 
       this.dialog = false
     },

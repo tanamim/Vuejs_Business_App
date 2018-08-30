@@ -1,8 +1,11 @@
 import Vue from 'vue'
+import bcrypt from 'bcryptjs'
 
 const state = {
   email: '',
   userId: null,
+  first: '',
+  last: '',
   isLoggedIn: false,
   loginError: ''
 }
@@ -20,9 +23,16 @@ const actions = {
         let data = resp.data
         if (data && data.length > 0) {
           // Test password entered (payload) against user object
-          if (data[0].password === payload.password) {
-            payload.userId = data[0]._id
+          const pwdHash = data[0].password
+          if (bcrypt.compareSync(payload.password, pwdHash)) {
+            const user = data[0]
+            payload.userId = user._id
+            payload.first = user.first
+            payload.last = user.last
+            payload.email = user.email
             commit('logInUser', payload)
+            localStorage.setItem('isLoginLocal', true) // DEBUG
+            sessionStorage.setItem('isLoginSession', true) // DEBUG
           } else {
             commit('loginError')
           }
@@ -31,14 +41,33 @@ const actions = {
       .catch(() => {
         commit('loginError')
       })
+  },
+  updateUserProfile ({ commit }, payload) {
+    // TODO: encrypt the user's password with salt
+    bcrypt.hash(payload.password, 8, (err, hash) => {
+      if (!err) {
+        payload.password = hash
+        Vue.axios.put('/user/' + this.state.user.userId, payload)
+          .then((resp) => {
+            console.log('HOGEhoge')
+            console.log(resp)
+          })
+          .catch((err) => {
+            console.log('EROORRRRRRRRRRRRRRRRRRRRR')
+            console.log(err)
+          })
+      }
+    })
   }
 }
 
 const mutations = {
   logInUser (state, payload) {
-    state.email = payload.email
-    state.userId = payload.userId
     state.isLoggedIn = true
+    state.email = payload.email
+    state.first = payload.first
+    state.last = payload.last
+    state.userId = payload.userId
   },
   loginError (state) {
     state.isLoggedIn = false
